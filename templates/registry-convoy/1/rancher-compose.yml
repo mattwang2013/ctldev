@@ -10,6 +10,11 @@
       required: true
       type: "string"
       default: "registry_host=true"
+    - variable: "DOMAIN"
+      label: "Host IP address"
+      description: "IP address of server.  This should be the CN in the certificates and will be the URL to contact the Registry and Web interface"
+      required: true
+      type: "string"
     - variable: "RPORT"
       label: "Registry Port"
       description: "Port on which to run the registry service"
@@ -46,11 +51,6 @@
       required: true
       type: "string"
       default: "registry"
-    - variable: "DOMAIN"
-      label: "FQDN"
-      description: "FQDN of server.  This should be the CN in the certificates and will be the URL to contact the Registry and Web interface"
-      required: true
-      type: "string"
 
 db:
   scale: 1
