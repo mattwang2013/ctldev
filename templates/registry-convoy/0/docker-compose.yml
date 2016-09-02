@@ -75,5 +75,5 @@ portus:
   net: host
   volumes:
   - ${KEYPATH}:/certs
-  image: mattwang201301/portus
+  image: mattwang201301/portus:2.0.5
   stdin_open: true
