@@ -16,8 +16,8 @@
       required: true
       type: "string"
     - variable: "KEYPATH"
-      label: "CRT KEY PATH"
-      description: "path of crt key in convoy"
+      label: "Path of local folder for ssh key"
+      description: "path of ssh key in local host"
       required: true
       type: "string"
     - variable: "RPORT"
