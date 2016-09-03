@@ -1,8 +1,8 @@
 .catalog:
-  name: "Portus"
-  version: "v2.0.5"
-  description: "Portus"
-  uuid: portus-2.0.5
+  name: "Registry"
+  version: "v2.4.1"
+  description: "Docker Registry"
+  uuid: registry-2.4
   questions: 
     - variable: "HOST_LABEL"
       label: "Host label"
@@ -16,28 +16,22 @@
       required: true
       type: "string"
     - variable: "KEYPATH"
-      label: "Path of host for ssh key"
+      label: "Path of local folder for ssh key"
       description: "path of ssh key in local host"
       required: true
       type: "string"
+    - variable: "RPORT"
+      label: "Registry Port"
+      description: "Port on which to run the registry service"
+      default: 5000
+      required: true
+      type: "int"
     - variable: "PPORT"
       label: "Admin Port"
       description: "Port on which to run the SSL Portus administration service and API"
       default: 443
       required: true
       type: "int"
-    - variable: "DBPASSWORD"
-      label: "DB Password"
-      description: "Password for Portus database access, must be 8 characters or longer"
-      required: true
-      default: password
-      type: "password"
-    - variable: "ROOTPASSWORD"
-      label: "DB Root Password"
-      description: "Root Password for MySQL database, must be 8 characters or longer.  This is not normally used."
-      required: true
-      default: password
-      type: "password"
     - variable: "DRIVER"
       label: "Storage Pool"
       description: "Convoy storage pool name"
@@ -51,7 +45,5 @@
       type: "string"
       default: "registry"
 
-db:
-  scale: 1
-portus:
+registry:
   scale: 1
