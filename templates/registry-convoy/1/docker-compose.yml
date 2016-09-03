@@ -1,5 +1,5 @@
 registry:
-  image: mattwang201301/registry:2.3.0
+  image: mattwang201301/registry:2.4.1
   environment:
     REGISTRY_LOG_LEVEL: warn
     REGISTRY_HTTP_SECRET: d38a16b9

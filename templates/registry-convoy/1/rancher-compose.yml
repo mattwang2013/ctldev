@@ -1,8 +1,8 @@
 .catalog:
   name: "Registry"
-  version: "v2.3.0"
+  version: "v2.4.1"
   description: "Docker Registry"
-  uuid: registry-2.3
+  uuid: registry-2.4
   questions: 
     - variable: "HOST_LABEL"
       label: "Host label"
