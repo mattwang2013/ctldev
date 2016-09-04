@@ -8,6 +8,7 @@ db:
   labels:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
+    fxnbd.portus.db: 1
   tty: true
   net: host
   volumes:
@@ -39,6 +40,8 @@ portus:
   labels:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
+    io.rancher.scheduler.affinity:container_label_soft: fxnbd.portus.db=1
+    fxnbd.portus.web: 1
   tty: true
   net: host
   volumes:
