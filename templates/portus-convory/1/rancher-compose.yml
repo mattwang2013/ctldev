@@ -1,6 +1,6 @@
 .catalog:
   name: "Portus"
-  version: "v2.0.5"
+  version: "v2.0.5-1"
   description: "Portus"
   uuid: portus-2.0.5-1
   questions: 
