@@ -44,7 +44,7 @@ portus:
   tty: true
   net: host
   volumes:
-  - ${KEYPATH}:/certs
+  - ${PFX}-certs:/certs
   image: mattwang201301/portus:2.0.5
   stdin_open: true
 
@@ -78,6 +78,6 @@ registry:
   net: host
   volumes:
   - ${PFX}-data:/var/lib/registry
-  - ${KEYPATH}:/certs
+  - ${PFX}-certs:/certs
   stdin_open: true
   volume_driver: ${DRIVER}
