@@ -1,6 +1,0 @@
-name: Registry-Convoy
-description: |
-  Secure Docker registry using Convoy.
-version: v2.4.1
-category: Applications
-

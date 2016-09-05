@@ -1,8 +1,8 @@
 .catalog:
   name: "Portus"
-  version: "v2.0.5"
+  version: "v2.0.5-1"
   description: "Portus"
-  uuid: portus-2.0.5
+  uuid: portus-2.0.5-1
   questions: 
     - variable: "HOST_LABEL"
       label: "Host label"
@@ -15,15 +15,16 @@
       description: "FQDN of server. This should be the CN in the certificates and will be the URL to contact the Registry and Web interface"
       required: true
       type: "string"
-    - variable: "KEYPATH"
-      label: "Path of local folder for ssh key"
-      description: "path of ssh key in local host"
-      required: true
-      type: "string"
     - variable: "PPORT"
       label: "Admin Port"
       description: "Port on which to run the SSL Portus administration service and API"
       default: 443
+      required: true
+      type: "int"
+    - variable: "RPORT"
+      label: "Registry Port"
+      description: "Port on which to run the registry service"
+      default: 5000
       required: true
       type: "int"
     - variable: "DBPASSWORD"
@@ -37,6 +38,12 @@
       description: "Root Password for MySQL database, must be 8 characters or longer.  This is not normally used."
       required: true
       default: password
+      type: "password"
+    - variable: "PORTUSPASSWORD"
+      label: "Portus Operate Password"
+      description: "Password for Portus self access, must be 8 characters or longer"
+      required: true
+      default: foxconnbd
       type: "password"
     - variable: "DRIVER"
       label: "Storage Pool"
@@ -54,4 +61,6 @@
 db:
   scale: 1
 portus:
+  scale: 1
+registry:
   scale: 1

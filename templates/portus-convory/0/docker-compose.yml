@@ -8,7 +8,6 @@ db:
   labels:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
-    fxnbd.portus.db: 1
   tty: true
   net: host
   volumes:
@@ -36,15 +35,49 @@ portus:
     PORTUS_DELETE_ENABLED: true
     PORTUS_SECRET_KEY_BASE: d38a16b9
     PORTUS_ENCRYPTION_PRIVATE_KEY_PATH: /certs/server-key.pem
-    PORTUS_PORTUS_PASSWORD: foxconnbd
+    PORTUS_PORTUS_PASSWORD: ${PORTUSPASSWORD}
   labels:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
-    io.rancher.scheduler.affinity:container_label_soft: fxnbd.portus.db=1
-    fxnbd.portus.web: 1
+  links:
+  - db:db
   tty: true
   net: host
   volumes:
-  - ${KEYPATH}:/certs
+  - ${PFX}-certs:/certs
   image: mattwang201301/portus:2.0.5
   stdin_open: true
+
+registry:
+  image: mattwang201301/registry:2.3.0-1
+  environment:
+    REGISTRY_LOG_LEVEL: warn
+    REGISTRY_HTTP_SECRET: d38a16b9
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/server-crt.pem
+    REGISTRY_HTTP_TLS_KEY: /certs/server-key.pem
+    REGISTRY_STORAGE_DELETE_ENABLED: 'true'
+    REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+    REGISTRY_AUTH: token
+    REGISTRY_AUTH_TOKEN_ISSUER: ${DOMAIN}
+    REGISTRY_AUTH_TOKEN_REALM: https://${DOMAIN}:${PPORT}/v2/token
+    REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE: /certs/server-crt.pem
+    REGISTRY_AUTH_TOKEN_SERVICE: ${DOMAIN}:${RPORT}
+    SSL_TRUST: ${DOMAIN}:${PPORT}
+    REGISTRY_NOTIFICATIONS_ENDPOINTS: |
+      - name: portus
+        url: https://${DOMAIN}:${PPORT}/v2/webhooks/events
+        timeout: 500
+        threshold: 5
+        backoff: 1
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
+  links:
+  - portus:portus
+  tty: true
+  net: host
+  volumes:
+  - ${PFX}-data:/var/lib/registry
+  - ${PFX}-certs:/certs
+  stdin_open: true
+  volume_driver: ${DRIVER}
