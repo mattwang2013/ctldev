@@ -10,6 +10,11 @@
       required: true
       type: "string"
       default: "registry_host=true"
+    - variable: "KEYPATH"
+      label: "Path of local folder for ssh key"
+      description: "path of ssh key in local host"
+      required: true
+      type: "string"
     - variable: "DOMAIN"
       label: "FQDN"
       description: "FQDN of server. This should be the CN in the certificates and will be the URL to contact the Registry and Web interface"
