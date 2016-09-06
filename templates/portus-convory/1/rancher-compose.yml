@@ -1,8 +1,8 @@
 .catalog:
   name: "Portus"
-  version: "v2.0.5-1"
+  version: "v2.0.5-2"
   description: "Portus"
-  uuid: portus-2.0.5-1
+  uuid: portus-2.0.5-2
   questions: 
     - variable: "HOST_LABEL"
       label: "Host label"

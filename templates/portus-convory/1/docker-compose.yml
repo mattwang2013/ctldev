@@ -10,7 +10,7 @@ db:
     io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
   tty: true
   ports:
-    - ${DBPORT}:80
+    - ${DBPORT}:3306
   volumes:
   - ${PFX}-db:/var/lib/mysql
   stdin_open: true
