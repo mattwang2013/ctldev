@@ -9,6 +9,7 @@
       description: "stream source url for face recognition"
       label: "Stream Source Address"
       required: true
+      default: "/input/sample/sample.mp4"
       type: string
     - variable: gpu_num
       description: "maximum count of gpu for car detection"
