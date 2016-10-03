@@ -1,5 +1,5 @@
 fxndetect:
-  image: mattwang201301/fxnfr-gpu:AlexNet
+  image: mattwang201301/car_detect-gpu:0.1
   volumes:
   - ${gpu_driver}:/usr/local/nvidia:ro
   privileged: true
