@@ -1,6 +1,6 @@
 .catalog:
   name: "FOXCONN Car Detection"
-  version: "0.1"
+  version: "GPU v0.1"
   description: "FOXCONN Car Detection"
   uuid: fxncd-gpu
   minimum_rancher_version: v0.51.0
@@ -26,7 +26,7 @@
       description: "public port to access the fxnfr web site"
       label: "Web Public Port"
       required: true
-      default: "8000"
+      default: "5000"
       type: "int"
     - variable: slot_port
       description: "public slot port to access the fxnfr web site"
